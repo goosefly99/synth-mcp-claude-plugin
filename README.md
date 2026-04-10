@@ -41,7 +41,3 @@ Runtime data:
 - `config.local.json` - optional local overrides, never tracked
 
 Collections are loaded on demand by passing an absolute `file_path` to `synth_load_collection`; they are not bundled with the plugin.
-
-## License
-
-MIT - see [LICENSE](LICENSE).
