@@ -1,0 +1,10 @@
+{
+  "name": "synth-mcp",
+  "description": "Research synthesis MCP server — load research collections, query items, and generate structured design specs",
+  "version": "0.1.0",
+  "author": { "name": "olive" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goosefly99/synth-mcp-claude-plugin.git"
+  }
+}

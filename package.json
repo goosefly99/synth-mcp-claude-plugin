@@ -1,0 +1,17 @@
+{
+  "name": "synth-mcp",
+  "version": "0.1.0",
+  "description": "Research synthesis MCP server — load research collections, query items, and generate structured design specs",
+  "type": "module",
+  "bin": "./server.ts",
+  "scripts": {
+    "start": "node server.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^6.0.2"
+  }
+}
