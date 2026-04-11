@@ -1,5 +1,5 @@
 {
-  "name": "synth-mcp",
+  "name": "synth-mcp-auto-dev",
   "description": "Research synthesis MCP server — load research collections, query items, and generate structured design specs",
   "version": "0.1.0",
   "author": { "name": "olive" },
