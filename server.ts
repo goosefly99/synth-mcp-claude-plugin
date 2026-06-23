@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { Server } from '@modelcontextprotocol/sdk/server/index.js'
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
+import { Server } from '@modelcontextprotocol/sdk/dist/esm/server/index.js'
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/dist/esm/server/stdio.js'
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
-} from '@modelcontextprotocol/sdk/types.js'
+} from '@modelcontextprotocol/sdk/dist/esm/types.js'
 
 import {
   loadCollection,
