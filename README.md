@@ -28,12 +28,14 @@ Or clone manually:
 ```
 git clone https://github.com/goosefly99/synth-mcp-claude-plugin.git
 cd synth-mcp-claude-plugin
-npm install
+uv sync
 ```
+
+Requires [uv](https://docs.astral.sh/uv/) and Python ≥ 3.11.
 
 ## Configuration
 
-The server registers itself via `.mcp.json` and is launched through `start.mjs`. No environment variables are required for basic operation.
+The server registers itself via `.mcp.json` and is launched via `uv run python -m synth_mcp`. No environment variables are required for basic operation.
 
 Runtime data:
 
