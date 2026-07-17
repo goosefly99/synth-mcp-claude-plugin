@@ -37,6 +37,10 @@ Requires [uv](https://docs.astral.sh/uv/) and Python ≥ 3.11.
 
 The server registers itself via `.mcp.json` and is launched via `uv run python -m synth_mcp`. No environment variables are required for basic operation.
 
+Optional environment variables:
+
+- `SYNTH_MAX_COLLECTIONS` — cap on how many loaded collections are kept in memory at once; when a new load exceeds the cap, the least-recently-loaded collection is evicted. Unset (default) = unlimited.
+
 Runtime data:
 
 - `specs/` - default output directory for saved design specs (gitignored)

@@ -71,7 +71,9 @@ Every tool name is prefixed `synth_`. The complete set:
 
 - **Collections are in-memory and ephemeral.** They live only for the server
   process and are lost on restart — reload before querying in a new session.
-  Re-loading the same name overwrites the prior copy.
+  Re-loading the same name overwrites the prior copy. The store is unbounded by
+  default; set `SYNTH_MAX_COLLECTIONS` to a positive integer to evict whole
+  least-recently-loaded collections beyond that cap.
 - **Items are addressed by their per-collection `id`.** `synth_query` emits
   `collection/id` handles; `synth_get_items` and `synth_create_spec` consume
   those exact ids, scoped to the collection that owns them.

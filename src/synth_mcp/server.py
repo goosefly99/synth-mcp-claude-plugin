@@ -35,6 +35,17 @@ def _output_dir() -> Path:
     return Path.cwd().resolve() / "specs"
 
 
+def _max_collections() -> int | None:
+    raw = os.environ.get("SYNTH_MAX_COLLECTIONS")
+    if raw is None or not raw.strip():
+        return None
+    try:
+        value = int(raw.strip())
+    except ValueError:
+        return None
+    return value if value > 0 else None
+
+
 def _as_string(value: Any) -> str:
     return "" if value is None else str(value)
 
@@ -189,6 +200,15 @@ def load_collection(file_path: str, name: str | None = None, field_overrides: di
         "available_tags": tag_set,
     }
     STORE[collection["name"]] = collection
+
+    max_collections = _max_collections()
+    if max_collections is not None:
+        # Opt-in cap (SYNTH_MAX_COLLECTIONS): refresh load recency, then
+        # evict whole least-recently-loaded collections beyond the cap.
+        STORE[collection["name"]] = STORE.pop(collection["name"])
+        while len(STORE) > max_collections:
+            del STORE[next(iter(STORE))]
+
     return collection
 
 
