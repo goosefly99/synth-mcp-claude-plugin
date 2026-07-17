@@ -236,13 +236,21 @@ def query_items(
     fields: dict[str, str] | None = None,
     limit: int = 20,
 ) -> list[dict[str, Any]]:
-    targets = [STORE.get(collection)] if collection and STORE.get(collection) else list(STORE.values())
-    if collection and not targets:
-        raise ValueError(f"Collection '{collection}' not loaded. Use synth_load_collection first.")
+    if collection:
+        named = STORE.get(collection)
+        if named is None:
+            loaded = ", ".join(STORE) or "none"
+            raise ValueError(
+                f"Collection '{collection}' not loaded (loaded collections: {loaded}). "
+                "Use synth_load_collection first."
+            )
+        targets = [named]
+    else:
+        # No collection named: the caller explicitly asked to query all
+        # loaded collections.
+        targets = list(STORE.values())
     results: list[dict[str, Any]] = []
     for col in targets:
-        if not col:
-            continue
         for item in col["items"]:
             if not _matches_filters(item, tags, search, fields):
                 continue
